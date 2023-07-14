@@ -1,0 +1,320 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders the calculation form 1`] = `
+<div>
+  <form>
+    <div
+      class="flex justiyf-center items-center"
+    >
+      <div
+        class="flex flex-col"
+      >
+        <div
+          class="grow mt-6 divide-y divide-gray-200"
+        >
+          <label
+            class="block text-sm font-medium text-gray-700"
+            for="salePrice"
+          >
+            Sale Price
+          </label>
+          <div
+            class="mt-2 mr-5 flex flex-col"
+          >
+            <input
+              class=" block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+              data-testid="salePrice"
+              id="salePrice"
+              name="salePrice"
+              type="number"
+              value="0"
+            />
+          </div>
+        </div>
+        <div
+          class="grow mt-6 divide-y divide-gray-200"
+        >
+          <label
+            class="block text-sm font-medium text-gray-700"
+            for="downPayment"
+          >
+            Down Payment
+          </label>
+          <div
+            class="mt-2 mr-5 flex flex-col"
+          >
+            <input
+              class=" block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+              data-testid="downPayment"
+              id="downPayment"
+              name="downPayment"
+              type="number"
+              value="0"
+            />
+          </div>
+        </div>
+        <div
+          class="grow mt-6 divide-y divide-gray-200"
+        >
+          <label
+            class="block text-sm font-medium text-gray-700"
+            for="mortgageDuration"
+          >
+            Mortgage Duration (years)
+          </label>
+          <div
+            class="mt-2 mr-5 flex flex-col"
+          >
+            <input
+              class=" block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+              data-testid="mortgageDuration"
+              id="mortgageDuration"
+              name="mortgageDuration"
+              type="number"
+              value="0"
+            />
+          </div>
+        </div>
+        <div
+          class="grow mt-6 divide-y divide-gray-200"
+        >
+          <label
+            class="block text-sm font-medium text-gray-700"
+            for="interestRate"
+          >
+            Interest Rate (annual)
+          </label>
+          <div
+            class="mt-2 mr-5 flex flex-col"
+          >
+            <input
+              class=" block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+              data-testid="interestRate"
+              id="interestRate"
+              name="interestRate"
+              type="number"
+              value="0"
+            />
+          </div>
+        </div>
+      </div>
+      <div
+        class="flex flex-col"
+      >
+        <div
+          class="grow mt-6 divide-y divide-gray-200"
+        >
+          <label
+            class="block text-sm font-medium text-gray-700"
+            for="homeInsurance"
+          >
+            Home Insurance
+          </label>
+          <div
+            class="mt-2 mr-5 flex flex-col"
+          >
+            <input
+              class=" block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+              data-testid="homeInsurance"
+              id="homeInsurance"
+              name="homeInsurance"
+              type="number"
+              value="0"
+            />
+          </div>
+        </div>
+        <div
+          class="grow mt-6 divide-y divide-gray-200"
+        >
+          <label
+            class="block text-sm font-medium text-gray-700"
+            for="propertyTax"
+          >
+            Property Tax
+          </label>
+          <div
+            class="mt-2 mr-5 flex flex-col"
+          >
+            <input
+              class=" block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+              data-testid="propertyTax"
+              id="propertyTax"
+              name="propertyTax"
+              type="number"
+              value="0"
+            />
+          </div>
+        </div>
+        <div
+          class="grow mt-6 divide-y divide-gray-200"
+        >
+          <label
+            class="block text-sm font-medium text-gray-700"
+            for="mortgageInsurance"
+          >
+            Mortgage Insurance
+          </label>
+          <div
+            class="mt-2 mr-5 flex flex-col"
+          >
+            <input
+              class=" block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+              data-testid="mortgageInsurance"
+              id="mortgageInsurance"
+              name="mortgageInsurance"
+              type="number"
+              value="0"
+            />
+          </div>
+        </div>
+        <div
+          class="grow mt-6 divide-y divide-gray-200"
+        >
+          <label
+            class="block text-sm font-medium text-gray-700"
+            for="extraMonthlyPayment"
+          >
+            Extra Monthly Payment
+          </label>
+          <div
+            class="mt-2 mr-5 flex flex-col"
+          >
+            <input
+              class=" block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+              data-testid="extraMonthlyPayment"
+              id="extraMonthlyPayment"
+              name="extraMonthlyPayment"
+              type="number"
+              value="0"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+    <button
+      class="disabled-btn text-gray-400"
+      disabled=""
+      type="submit"
+    >
+      Calculate
+    </button>
+  </form>
+  <div
+    class="px-4 sm:px-6 lg:px-8"
+  >
+    <div
+      class="sm:flex sm:items-center"
+    >
+      <div
+        class="sm:flex-auto"
+      >
+        <h1
+          class="text-base font-semibold leading-6 text-gray-900"
+        >
+          Amortization
+        </h1>
+        <p
+          class="mt-2 text-sm text-gray-700"
+        >
+          See the calculated amortization table below.
+        </p>
+      </div>
+      <div
+        class="mt-4 sm:ml-16 sm:mt-0 sm:flex-none"
+      >
+        <button
+          class="block rounded-md bg-indigo-600 px-3 py-2 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+          type="button"
+        >
+          Some button
+        </button>
+      </div>
+    </div>
+    <div
+      class="mt-8 flow-root"
+    >
+      <div
+        class="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8"
+      >
+        <div
+          class="inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8"
+        >
+          <table
+            class="min-w-full divide-y divide-gray-300"
+          >
+            <thead>
+              <tr>
+                <th
+                  class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"
+                >
+                  <div>
+                    <h3>
+                      Term
+                    </h3>
+                  </div>
+                </th>
+                <th
+                  class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"
+                >
+                  <div>
+                    <h3>
+                      Monthly Payments
+                    </h3>
+                  </div>
+                </th>
+                <th
+                  class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"
+                >
+                  <div>
+                    <h3>
+                      Principal
+                    </h3>
+                  </div>
+                </th>
+                <th
+                  class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"
+                >
+                  <div>
+                    <h3>
+                      Interest
+                    </h3>
+                  </div>
+                </th>
+                <th
+                  class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"
+                >
+                  <div>
+                    <h3>
+                      Rem. Principal
+                    </h3>
+                  </div>
+                </th>
+                <th
+                  class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"
+                >
+                  <div>
+                    <h3>
+                      Extra Payment
+                    </h3>
+                  </div>
+                </th>
+              </tr>
+            </thead>
+            <tbody
+              class="divide-y divide-gray-200"
+            >
+              <tr>
+                <td
+                  class="whitespace-nowrap px-3 py-4 text-sm text-gray-500"
+                >
+                  Data here
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

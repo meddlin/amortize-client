@@ -1,5 +1,5 @@
 
-import CalculationForm from './calculation-form';
+import CalculationForm from '../components/calculation-form';
 
 export default function Home() {
   return (
