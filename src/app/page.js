@@ -1,5 +1,5 @@
 
-import Form from './form';
+import CalculationForm from './calculation-form';
 
 export default function Home() {
   return (
@@ -7,7 +7,8 @@ export default function Home() {
       <h1 className="text-4xl font-bold text-center">
         Amortization Calculator
       </h1>
-      <Form />
+      
+      <CalculationForm />
     </main>
   )
 }
