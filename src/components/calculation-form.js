@@ -27,12 +27,31 @@ const CalculationForm = () => {
         extraMonthlyPayment: 0,
     }
 
+    const calculate = ({ 
+        salePrice, 
+        downPayment, 
+        mortgageDuration, 
+        interestRate, 
+        homeInsurance, 
+        propertyTax, 
+        mortgageInsurance, 
+        extraMonthlyPayment 
+    }) => {
+        const numerator = interestRate * Math.pow((1 + interestRate), mortgageDuration);
+        const denominator = Math.pow((1 + interestRate), mortgageDuration) - 1;
+        // const result = principal * (numerator / denominator);
+
+        return (salePrice - downPayment) * (numerator / denominator);
+    };
+
     return (
         <>
             <Formik
                 initialValues={initialValues}
                 validationSchema={FormSchema}
                 onSubmit={(values, { setSubmitting }) => {
+                    console.log(`Calculated: ${calculate(values)}`);
+
                     setTimeout(() => {
                         alert(JSON.stringify(values, null, 2));
                         setSubmitting(false);
@@ -178,7 +197,7 @@ const CalculationForm = () => {
 
                             <button
                                 type="submit"
-                                className={!(dirty && isValid) ? "disabled-btn text-gray-400" : ""}
+                                className={!(dirty && isValid) ? "disabled-btn text-gray-400" : "block rounded-md bg-indigo-600 px-3 py-2 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"}
                                 disabled={!(dirty && isValid)}
                             >
                                 Calculate
