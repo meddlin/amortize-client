@@ -37,6 +37,23 @@ const CalculationForm = () => {
         mortgageInsurance, 
         extraMonthlyPayment 
     }) => {
+        const payments = [];
+        for (let i = 0; i < mortgageDuration; i++) {
+            const principal = salePrice - downPayment;
+            const interest = principal * interestRate;
+            const monthlyPayments = (principal + interest) / mortgageDuration;
+            const remainingPrincipal = principal - monthlyPayments;
+            const extraPayment = extraMonthlyPayment;
+            payments.push({
+                term: i + 1,
+                monthlyPayments,
+                principal,
+                interest,
+                remainingPrincipal,
+                extraPayment,
+            });
+        }
+
         const numerator = interestRate * Math.pow((1 + interestRate), mortgageDuration);
         const denominator = Math.pow((1 + interestRate), mortgageDuration) - 1;
         // const result = principal * (numerator / denominator);
