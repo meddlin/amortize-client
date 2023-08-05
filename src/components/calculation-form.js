@@ -219,13 +219,23 @@ const CalculationForm = () => {
                                 </div>
                             </div>
 
-                            <button
-                                type="submit"
-                                className={!(dirty && isValid) ? "disabled-btn text-gray-400" : "block rounded-md bg-indigo-600 px-3 py-2 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"}
-                                disabled={!(dirty && isValid)}
-                            >
-                                Calculate
-                            </button>
+                            <div className="flex justify-between">
+                                <button
+                                    type="button"
+                                    onClick={() => handleReset()}
+                                    className={!(dirty && isValid) ? "disabled-btn text-gray-400" : "block rounded-md bg-indigo-600 px-3 py-2 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"}
+                                    disabled={!(dirty && isValid)}
+                                >
+                                    Reset
+                                </button>
+                                <button
+                                    type="submit"
+                                    className={!(dirty && isValid) ? "disabled-btn text-gray-400" : "block rounded-md bg-indigo-600 px-3 py-2 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"}
+                                    disabled={!(dirty && isValid)}
+                                >
+                                    Calculate
+                                </button>
+                            </div>
                         </form>
                 )}
             </Formik>
