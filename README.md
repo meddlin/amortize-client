@@ -20,3 +20,6 @@ yarn dev
 pnpm dev
 ```
 
+## Screenshot
+
+![screenshot](https://rushinglabs-docs.s3.us-east-2.amazonaws.com/project-amortize/amortize-screenshot.png)
