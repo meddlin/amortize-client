@@ -24,19 +24,31 @@ const Table = ({ amortization }) => {
         }),
         columnHelper.accessor('termPayment', {
             header: () => <h3>Monthly Payments</h3>,
-            cell: info => info.getValue(),
+            cell: info => {
+                const value = info.getValue();
+                return value ? `$${value.toFixed(2)}` : value;
+            },
         }),
         columnHelper.accessor('principalPayment', {
             header: () => <h3>Principal</h3>,
-            cell: info => info.getValue(),
+            cell: info => {
+                const value = info.getValue();
+                return value ? `$${value.toFixed(2)}` : value;
+            },
         }),
         columnHelper.accessor('interestPayment', {
             header: () => <h3>Interest</h3>,
-            cell: info => info.getValue(),
+            cell: info => {
+                const value = info.getValue();
+                return value ? `$${value.toFixed(2)}` : value;
+            },
         }),
-        columnHelper.accessor('remaining', { // columnHelper.accessor('remainingPrincipal', {
+        columnHelper.accessor('remaining', {
             header: () => <h3>Rem. Principal</h3>,
-            cell: info => info.getValue(),
+            cell: info => {
+                const value = info.getValue();
+                return value ? `$${value.toFixed(2)}` : value;
+            },
         }),
         columnHelper.accessor('extraPayment', {
             header: () => <h3>Extra Payment</h3>,
