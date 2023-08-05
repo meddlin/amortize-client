@@ -37,7 +37,14 @@ const CalculationForm = () => {
                 initialValues={initialValues}
                 validationSchema={FormSchema}
                 onSubmit={(values, { setSubmitting }) => {
-                    const schedule = amortizationSchedule(values.salePrice, values.downPayment, values.interestRate, values.mortgageDuration);
+                    const schedule = amortizationSchedule(
+                        values.salePrice, 
+                        values.downPayment, 
+                        values.interestRate, 
+                        values.mortgageDuration,
+                        values.homeInsurance,
+                        values.propertyTax
+                    );
                     setSchedule(schedule);
                     
                     setTimeout(() => {
@@ -116,7 +123,7 @@ const CalculationForm = () => {
                                 </div>
                                 <div className="flex flex-col">
                                     <div className="grow mt-6 divide-y divide-gray-200">
-                                    <label htmlFor="homeInsurance" className="block text-sm font-medium text-gray-700">Home Insurance</label>
+                                    <label htmlFor="homeInsurance" className="block text-sm font-medium text-gray-700">Home Insurance (monthly)</label>
                                     <div className="mt-2 mr-5 flex flex-col">
                                         <input 
                                             type="number"

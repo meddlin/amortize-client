@@ -14,6 +14,7 @@ import {
     getFacetedMinMaxValues,
     sortingFns,
 } from "@tanstack/react-table";
+import { info } from 'autoprefixer';
 
 const Table = ({ amortization }) => {    
     const columnHelper = createColumnHelper();
@@ -22,8 +23,15 @@ const Table = ({ amortization }) => {
             header: () => <h3>Term</h3>,
             cell: info => info.getValue(),
         }),
+        columnHelper.accessor('totalMonthlyCustomerPayment', {
+            header: () => <h3>Total Payment</h3>,
+            cell: info => {
+                const value = info.getValue();
+                return value ? `$${value.toFixed(2)}` : value;
+            }
+        }),
         columnHelper.accessor('termPayment', {
-            header: () => <h3>Monthly Payments</h3>,
+            header: () => <h3>P&I</h3>,
             cell: info => {
                 const value = info.getValue();
                 return value ? `$${value.toFixed(2)}` : value;
