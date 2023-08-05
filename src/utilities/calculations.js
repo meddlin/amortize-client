@@ -24,12 +24,12 @@ const monthlyPayment = (loanAmount, interestRate, terms) => {
  * @param {*} annualInterestRate 
  * @returns 
  */
-const amortizationPeriod = (monthlyPayment, outstandingLoanBalance, annualInterestRate) => {
+const amortizationPeriod = (monthlyPayment, outstandingLoanBalance, annualInterestRate, extraMonthlyPayment) => {
     const interestPayment = outstandingLoanBalance * annualInterestRate / 12;
     const principalPayment = monthlyPayment - (interestPayment);
     const termPayment = principalPayment + interestPayment;
 
-    const remainingBalance = outstandingLoanBalance - principalPayment;
+    const remainingBalance = outstandingLoanBalance - (principalPayment + extraMonthlyPayment);
 
     return {
         outstandingBalance: remainingBalance,
@@ -46,7 +46,7 @@ const amortizationPeriod = (monthlyPayment, outstandingLoanBalance, annualIntere
  * @param {*} terms 
  * @returns an array of objects representing the amortization schedule.
  */
-const amortizationSchedule = (salePrice, downPayment, interestRate, terms, homeInsurance, propertyTax) => {
+const amortizationSchedule = (salePrice, downPayment, interestRate, terms, homeInsurance, propertyTax, extraMonthlyPayment) => {
     const schedule = [];
     const loanAmount = salePrice - downPayment;
 
@@ -56,9 +56,9 @@ const amortizationSchedule = (salePrice, downPayment, interestRate, terms, homeI
     const monthly = monthlyPayment(loanAmount, adjustedIntRate, terms);
     for (let i = 0; i < terms; i++) {
         let currentBalance = remaining;
-        let { outstandingBalance, termPayment, principalPayment, interestPayment } = amortizationPeriod(monthly, currentBalance, adjustedIntRate);
+        let { outstandingBalance, termPayment, principalPayment, interestPayment } = amortizationPeriod(monthly, currentBalance, adjustedIntRate, extraMonthlyPayment);
 
-        const totalMonthlyCustomerPayment = homeInsurance + propertyTax + termPayment;
+        const totalMonthlyCustomerPayment = homeInsurance + propertyTax + termPayment + extraMonthlyPayment;
 
         if (remaining >= principalPayment) {
             remaining = outstandingBalance;
@@ -66,6 +66,9 @@ const amortizationSchedule = (salePrice, downPayment, interestRate, terms, homeI
         } else {
             remaining = 0;
             schedule.push({ term: i, remaining, termPayment, principalPayment, interestPayment, totalMonthlyCustomerPayment });
+            
+            // Break rather than continue filling the amortization schedule with $0 values.
+            break;
         }
     }
 

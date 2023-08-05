@@ -43,7 +43,8 @@ const CalculationForm = () => {
                         values.interestRate, 
                         values.mortgageDuration,
                         values.homeInsurance,
-                        values.propertyTax
+                        values.propertyTax,
+                        values.extraMonthlyPayment
                     );
                     setSchedule(schedule);
                     
