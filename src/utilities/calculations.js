@@ -13,9 +13,9 @@ const monthlyPayment = (loanAmount, interestRate, terms) => {
     const monthlyInterestRate = interestRate / 12;
     let res = loanAmount * (monthlyInterestRate * Math.pow((1 + monthlyInterestRate), terms)) / (Math.pow((1 + monthlyInterestRate), terms) - 1);
     
-    console.log(`
-        MONTHLY PAYMENT | interestRate: ${interestRate}, monthlyInterestRate: ${monthlyInterestRate}, res: ${res}
-    `);
+    // console.log(`
+    //     MONTHLY PAYMENT | interestRate: ${interestRate}, monthlyInterestRate: ${monthlyInterestRate}, res: ${res}
+    // `);
     return res;
 };
 
@@ -28,25 +28,25 @@ const monthlyPayment = (loanAmount, interestRate, terms) => {
  * @param {*} annualInterestRate 
  * @returns 
  */
-const amortizationPeriod = (totalMonthlyPayment, outstandingLoanBalance, annualInterestRate) => {
+const amortizationPeriod = (monthlyPayment, outstandingLoanBalance, annualInterestRate) => {
     // const totalMonthlyPayment = 1500;
     // const outstandingLoanBalance = 240000; // Term 1 => 250000 - "down payment"
 
     const interestPayment = outstandingLoanBalance * annualInterestRate / 12;
-    const principalPayment = totalMonthlyPayment - (interestPayment);
+    const principalPayment = monthlyPayment - (interestPayment);
     const termPayment = principalPayment + interestPayment;
 
-    const endingBalance = outstandingLoanBalance - (termPayment);
+    const remainingBalance = outstandingLoanBalance - principalPayment;
 
-    console.log(`
-        AMORTIZATION PERIOD | 
-        totalMonthlyPayment: ${totalMonthlyPayment}, 
-        outstandingLoanBalance: ${outstandingLoanBalance}, 
-        annualInterestRate: ${annualInterestRate}, interestPayment: ${interestPayment}, principalPayment: ${principalPayment}, termPayment: ${termPayment}, endingBalance: ${endingBalance}
-    `);
+    // console.log(`
+    //     AMORTIZATION PERIOD | 
+    //     monthlyPayment: ${monthlyPayment}, 
+    //     outstandingLoanBalance: ${outstandingLoanBalance}, 
+    //     annualInterestRate: ${annualInterestRate}, interestPayment: ${interestPayment}, principalPayment: ${principalPayment}, termPayment: ${termPayment}, remainingBalance: ${remainingBalance}
+    // `);
 
     return {
-        endingBalance: endingBalance,
+        outstandingBalance: remainingBalance,
         termPayment: termPayment, 
         principalPayment: principalPayment, 
         interestPayment: interestPayment
@@ -64,16 +64,21 @@ const amortizationSchedule = (salePrice, downPayment, interestRate, terms) => {
     const schedule = [];
     const loanAmount = salePrice - downPayment;
 
-    let remainingBalance = loanAmount;
+    let remaining = loanAmount;
     let adjustedIntRate = interestRate / 100;
 
     const monthly = monthlyPayment(loanAmount, adjustedIntRate, terms);
     for (let i = 0; i < terms; i++) {
-        let currentBalance = remainingBalance;
-        let { endingBalance, termPayment, principalPayment, interestPayment } = amortizationPeriod(monthly, currentBalance, adjustedIntRate);
-        remainingBalance = endingBalance;
+        let currentBalance = remaining;
+        let { outstandingBalance, termPayment, principalPayment, interestPayment } = amortizationPeriod(monthly, currentBalance, adjustedIntRate);
 
-        schedule.push({ term: i, endingBalance, termPayment, principalPayment, interestPayment });
+        if (remaining >= principalPayment) {
+            remaining = outstandingBalance;
+            schedule.push({ term: i, remaining, termPayment, principalPayment, interestPayment });
+        } else {
+            remaining = 0;
+            schedule.push({ term: i, remaining, termPayment, principalPayment, interestPayment });
+        }
     }
 
     return schedule;

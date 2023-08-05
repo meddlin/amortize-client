@@ -38,7 +38,7 @@ const CalculationForm = () => {
                 validationSchema={FormSchema}
                 onSubmit={(values, { setSubmitting }) => {
                     const schedule = amortizationSchedule(values.salePrice, values.downPayment, values.interestRate, values.mortgageDuration);
-                    console.log(`Schedule: ${JSON.stringify(schedule)}`);
+                    // console.log(`Schedule: ${JSON.stringify(schedule)}`);
                     
                     setSchedule(schedule);
                     
@@ -84,7 +84,7 @@ const CalculationForm = () => {
                                         </div>
                                     </div>
                                     <div className="grow mt-6 divide-y divide-gray-200">
-                                        <label htmlFor="mortgageDuration" className="block text-sm font-medium text-gray-700">Mortgage Duration (years)</label>
+                                        <label htmlFor="mortgageDuration" className="block text-sm font-medium text-gray-700">Mortgage Duration (months)</label>
                                         <div className="mt-2 mr-5 flex flex-col">
                                             <input 
                                                 type="number"
