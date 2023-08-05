@@ -1,10 +1,14 @@
 'use client'
 
+import { useState } from 'react';
 import { Formik, Form, ErrorMessage } from "formik";
 import { number, object, string, date } from 'yup';
 import Table from './table';
+import { amortizationSchedule } from '../utilities/calculations';
 
 const CalculationForm = () => {
+    const [schedule, setSchedule] = useState([]);
+
     const FormSchema = object().shape({
         salePrice: number().required('Sale price is required'),
         downPayment: number().optional(),
@@ -37,28 +41,29 @@ const CalculationForm = () => {
         mortgageInsurance, 
         extraMonthlyPayment 
     }) => {
-        const payments = [];
-        for (let i = 0; i < mortgageDuration; i++) {
-            const principal = salePrice - downPayment;
-            const interest = principal * interestRate;
-            const monthlyPayments = (principal + interest) / mortgageDuration;
-            const remainingPrincipal = principal - monthlyPayments;
-            const extraPayment = extraMonthlyPayment;
-            payments.push({
-                term: i + 1,
-                monthlyPayments,
-                principal,
-                interest,
-                remainingPrincipal,
-                extraPayment,
-            });
-        }
+        // const payments = [];
+        // for (let i = 0; i < mortgageDuration; i++) {
+        //     const principal = salePrice - downPayment;
+        //     const interest = principal * interestRate;
+        //     const monthlyPayments = (principal + interest) / mortgageDuration;
+        //     const remainingPrincipal = principal - monthlyPayments;
+        //     const extraPayment = extraMonthlyPayment;
+        //     payments.push({
+        //         term: i + 1,
+        //         monthlyPayments,
+        //         principal,
+        //         interest,
+        //         remainingPrincipal,
+        //         extraPayment,
+        //     });
+        // }
 
-        const numerator = interestRate * Math.pow((1 + interestRate), mortgageDuration);
-        const denominator = Math.pow((1 + interestRate), mortgageDuration) - 1;
-        // const result = principal * (numerator / denominator);
+        // const numerator = interestRate * Math.pow((1 + interestRate), mortgageDuration);
+        // const denominator = Math.pow((1 + interestRate), mortgageDuration) - 1;
 
-        return (salePrice - downPayment) * (numerator / denominator);
+        // // const result = principal * (numerator / denominator);
+
+        // return (salePrice - downPayment) * (numerator / denominator);
     };
 
     return (
@@ -67,10 +72,12 @@ const CalculationForm = () => {
                 initialValues={initialValues}
                 validationSchema={FormSchema}
                 onSubmit={(values, { setSubmitting }) => {
-                    console.log(`Calculated: ${calculate(values)}`);
+                    const schedule = amortizationSchedule(values.salePrice, values.interestRate, values.mortgageDuration);
+                    setSchedule(schedule);
+                    console.log(`Schedule: ${JSON.stringify(schedule)}`);
 
                     setTimeout(() => {
-                        alert(JSON.stringify(values, null, 2));
+                        // alert(JSON.stringify(values, null, 2));
                         setSubmitting(false);
                     }, 400);
                 }}
@@ -223,7 +230,7 @@ const CalculationForm = () => {
                 )}
             </Formik>
 
-            <Table />
+            <Table amortization={schedule} />
         </>
     );
 };

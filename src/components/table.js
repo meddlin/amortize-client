@@ -15,9 +15,8 @@ import {
     sortingFns,
 } from "@tanstack/react-table";
 
-const Table = () => {
+const Table = ({ amortization }) => {
     // const { amortization, isLoadingAmortization, isErrorAmortization } = useAmortization();
-    const amortization = [];
     
     const columnHelper = createColumnHelper();
     const columns = [
@@ -37,7 +36,7 @@ const Table = () => {
             header: () => <h3>Interest</h3>,
             cell: info => info.getValue(),
         }),
-        columnHelper.accessor('remainingPrincipal', {
+        columnHelper.accessor('endingBalance', { // columnHelper.accessor('remainingPrincipal', {
             header: () => <h3>Rem. Principal</h3>,
             cell: info => info.getValue(),
         }),
