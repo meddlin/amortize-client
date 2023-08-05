@@ -21,10 +21,13 @@ const Table = ({ amortization }) => {
     const columns = [
         columnHelper.accessor('term', {
             header: () => <h3>Term</h3>,
-            cell: info => info.getValue(),
+            cell: info => {
+                const value = info.getValue();
+                return value + 1;
+            }
         }),
         columnHelper.accessor('totalMonthlyCustomerPayment', {
-            header: () => <h3>Total Payment</h3>,
+            header: () => <h3>Total Monthly Payment</h3>,
             cell: info => {
                 const value = info.getValue();
                 return value ? `$${value.toFixed(2)}` : value;
