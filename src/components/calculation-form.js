@@ -52,69 +52,69 @@ const CalculationForm = () => {
                             <div className="flex justiyf-center items-center">
                                 <div className="flex flex-col">
                                     <div className="grow mt-6 divide-y divide-gray-200">
-                                    <label htmlFor="salePrice" className="block text-sm font-medium text-gray-700">Sale Price</label>
-                                    <div className="mt-2 mr-5 flex flex-col">
-                                        <input 
-                                            type="number"
-                                            name="salePrice"
-                                            id="salePrice"
-                                            data-testid="salePrice"
-                                            className={ `${errors.salePrice && touched.salePrice ? 'input-error' : ''} block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6` }
-                                            onChange={handleChange}
-                                            onBlur={handleBlur}
-                                            value={values.salePrice}
-                                        />
-                                        <ErrorMessage name="salePrice" component="span" className="error text-xs text-red-700" />
+                                        <label htmlFor="salePrice" className="block text-sm font-medium text-gray-700">Sale Price</label>
+                                        <div className="mt-2 mr-5 flex flex-col">
+                                            <input 
+                                                type="number"
+                                                name="salePrice"
+                                                id="salePrice"
+                                                data-testid="salePrice"
+                                                className={ `${errors.salePrice && touched.salePrice ? 'input-error' : ''} block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6` }
+                                                onChange={handleChange}
+                                                onBlur={handleBlur}
+                                                value={values.salePrice}
+                                            />
+                                            <ErrorMessage name="salePrice" component="span" className="error text-xs text-red-700" />
+                                        </div>
                                     </div>
-                                </div>
-                                <div className="grow mt-6 divide-y divide-gray-200">
-                                    <label htmlFor="downPayment" className="block text-sm font-medium text-gray-700">Down Payment</label>
-                                    <div className="mt-2 mr-5 flex flex-col">
-                                        <input 
-                                            type="number"
-                                            name="downPayment"
-                                            id="downPayment"
-                                            data-testid="downPayment"
-                                            className={ `${errors.downPayment && touched.downPayment ? 'input-error' : ''} block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6` }
-                                            onChange={handleChange}
-                                            onBlur={handleBlur}
-                                            value={values.downPayment}
-                                        />
-                                        <ErrorMessage name="downPayment" component="span" className="error text-xs text-red-700" />
+                                    <div className="grow mt-6 divide-y divide-gray-200">
+                                        <label htmlFor="downPayment" className="block text-sm font-medium text-gray-700">Down Payment</label>
+                                        <div className="mt-2 mr-5 flex flex-col">
+                                            <input 
+                                                type="number"
+                                                name="downPayment"
+                                                id="downPayment"
+                                                data-testid="downPayment"
+                                                className={ `${errors.downPayment && touched.downPayment ? 'input-error' : ''} block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6` }
+                                                onChange={handleChange}
+                                                onBlur={handleBlur}
+                                                value={values.downPayment}
+                                            />
+                                            <ErrorMessage name="downPayment" component="span" className="error text-xs text-red-700" />
+                                        </div>
                                     </div>
-                                </div>
-                                <div className="grow mt-6 divide-y divide-gray-200">
-                                    <label htmlFor="mortgageDuration" className="block text-sm font-medium text-gray-700">Mortgage Duration (years)</label>
-                                    <div className="mt-2 mr-5 flex flex-col">
-                                        <input 
-                                            type="number"
-                                            name="mortgageDuration"
-                                            id="mortgageDuration"
-                                            data-testid="mortgageDuration"
-                                            className={ `${errors.mortgageDuration && touched.mortgageDuration ? 'input-error' : ''} block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6` }
-                                            onChange={handleChange}
-                                            onBlur={handleBlur}
-                                            value={values.mortgageDuration}
-                                        />
-                                        <ErrorMessage name="mortgageDuration" component="span" className="error text-xs text-red-700" />
+                                    <div className="grow mt-6 divide-y divide-gray-200">
+                                        <label htmlFor="mortgageDuration" className="block text-sm font-medium text-gray-700">Mortgage Duration (years)</label>
+                                        <div className="mt-2 mr-5 flex flex-col">
+                                            <input 
+                                                type="number"
+                                                name="mortgageDuration"
+                                                id="mortgageDuration"
+                                                data-testid="mortgageDuration"
+                                                className={ `${errors.mortgageDuration && touched.mortgageDuration ? 'input-error' : ''} block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6` }
+                                                onChange={handleChange}
+                                                onBlur={handleBlur}
+                                                value={values.mortgageDuration}
+                                            />
+                                            <ErrorMessage name="mortgageDuration" component="span" className="error text-xs text-red-700" />
+                                        </div>
                                     </div>
-                                </div>
-                                <div className="grow mt-6 divide-y divide-gray-200">
-                                    <label htmlFor="interestRate" className="block text-sm font-medium text-gray-700">Interest Rate (annual)</label>
-                                    <div className="mt-2 mr-5 flex flex-col">
-                                        <input 
-                                            type="number"
-                                            name="interestRate"
-                                            id="interestRate"
-                                            data-testid="interestRate"
-                                            className={ `${errors.interestRate && touched.interestRate ? 'input-error' : ''} block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6` }
-                                            onChange={handleChange}
-                                            onBlur={handleBlur}
-                                            value={values.interestRate}
-                                        />
-                                        <ErrorMessage name="interestRate" component="span" className="error text-xs text-red-700" />
+                                    <div className="grow mt-6 divide-y divide-gray-200">
+                                        <label htmlFor="interestRate" className="block text-sm font-medium text-gray-700">Interest Rate (annual)</label>
+                                        <div className="mt-2 mr-5 flex flex-col">
+                                            <input 
+                                                type="number"
+                                                name="interestRate"
+                                                id="interestRate"
+                                                data-testid="interestRate"
+                                                className={ `${errors.interestRate && touched.interestRate ? 'input-error' : ''} block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6` }
+                                                onChange={handleChange}
+                                                onBlur={handleBlur}
+                                                value={values.interestRate}
+                                            />
+                                            <ErrorMessage name="interestRate" component="span" className="error text-xs text-red-700" />
+                                        </div>
                                     </div>
-                                </div>
                                 </div>
                                 <div className="flex flex-col">
                                     <div className="grow mt-6 divide-y divide-gray-200">
