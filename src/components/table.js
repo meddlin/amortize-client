@@ -61,9 +61,12 @@ const Table = ({ amortization }) => {
                 return value ? `$${value.toFixed(2)}` : value;
             },
         }),
-        columnHelper.accessor('extraPayment', {
+        columnHelper.accessor('extraMonthlyPayment', {
             header: () => <h3>Extra Payment</h3>,
-            cell: info => info.getValue(),
+            cell: info => {
+                const value = info.getValue();
+                return value ? `$${value.toFixed(2)}` : value;
+            },
         }),
     ];
 
