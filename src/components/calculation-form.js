@@ -31,41 +31,6 @@ const CalculationForm = () => {
         extraMonthlyPayment: 0,
     }
 
-    const calculate = ({ 
-        salePrice, 
-        downPayment, 
-        mortgageDuration, 
-        interestRate, 
-        homeInsurance, 
-        propertyTax, 
-        mortgageInsurance, 
-        extraMonthlyPayment 
-    }) => {
-        // const payments = [];
-        // for (let i = 0; i < mortgageDuration; i++) {
-        //     const principal = salePrice - downPayment;
-        //     const interest = principal * interestRate;
-        //     const monthlyPayments = (principal + interest) / mortgageDuration;
-        //     const remainingPrincipal = principal - monthlyPayments;
-        //     const extraPayment = extraMonthlyPayment;
-        //     payments.push({
-        //         term: i + 1,
-        //         monthlyPayments,
-        //         principal,
-        //         interest,
-        //         remainingPrincipal,
-        //         extraPayment,
-        //     });
-        // }
-
-        // const numerator = interestRate * Math.pow((1 + interestRate), mortgageDuration);
-        // const denominator = Math.pow((1 + interestRate), mortgageDuration) - 1;
-
-        // // const result = principal * (numerator / denominator);
-
-        // return (salePrice - downPayment) * (numerator / denominator);
-    };
-
     return (
         <>
             <Formik
@@ -73,11 +38,11 @@ const CalculationForm = () => {
                 validationSchema={FormSchema}
                 onSubmit={(values, { setSubmitting }) => {
                     const schedule = amortizationSchedule(values.salePrice, values.interestRate, values.mortgageDuration);
-                    setSchedule(schedule);
                     console.log(`Schedule: ${JSON.stringify(schedule)}`);
-
+                    
+                    setSchedule(schedule);
+                    
                     setTimeout(() => {
-                        // alert(JSON.stringify(values, null, 2));
                         setSubmitting(false);
                     }, 400);
                 }}
