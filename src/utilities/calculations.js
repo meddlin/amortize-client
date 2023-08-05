@@ -60,15 +60,17 @@ const amortizationPeriod = (totalMonthlyPayment, outstandingLoanBalance, annualI
  * @param {*} terms 
  * @returns an array of objects representing the amortization schedule.
  */
-const amortizationSchedule = (loanAmount, interestRate, terms) => {
+const amortizationSchedule = (salePrice, downPayment, interestRate, terms) => {
     const schedule = [];
+    const loanAmount = salePrice - downPayment;
+
     let remainingBalance = loanAmount;
     let adjustedIntRate = interestRate / 100;
 
     const monthly = monthlyPayment(loanAmount, adjustedIntRate, terms);
     for (let i = 0; i < terms; i++) {
         let currentBalance = remainingBalance;
-        let { endingBalance, termPayment, principalPayment, interestPayment} = amortizationPeriod(monthly, currentBalance, adjustedIntRate);
+        let { endingBalance, termPayment, principalPayment, interestPayment } = amortizationPeriod(monthly, currentBalance, adjustedIntRate);
         remainingBalance = endingBalance;
 
         schedule.push({ term: i, endingBalance, termPayment, principalPayment, interestPayment });

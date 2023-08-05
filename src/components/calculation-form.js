@@ -37,7 +37,7 @@ const CalculationForm = () => {
                 initialValues={initialValues}
                 validationSchema={FormSchema}
                 onSubmit={(values, { setSubmitting }) => {
-                    const schedule = amortizationSchedule(values.salePrice, values.interestRate, values.mortgageDuration);
+                    const schedule = amortizationSchedule(values.salePrice, values.downPayment, values.interestRate, values.mortgageDuration);
                     console.log(`Schedule: ${JSON.stringify(schedule)}`);
                     
                     setSchedule(schedule);
