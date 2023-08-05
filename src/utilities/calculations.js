@@ -60,10 +60,10 @@ const amortizationSchedule = (salePrice, downPayment, interestRate, terms, homeI
 
         if (remaining >= principalPayment) {
             remaining = outstandingBalance;
-            schedule.push({ term: i, remaining, termPayment, principalPayment, interestPayment, totalMonthlyCustomerPayment });
+            schedule.push({ term: i, remaining, termPayment, principalPayment, interestPayment, totalMonthlyCustomerPayment, extraMonthlyPayment });
         } else {
             remaining = 0;
-            schedule.push({ term: i, remaining, termPayment, principalPayment, interestPayment, totalMonthlyCustomerPayment });
+            schedule.push({ term: i, remaining, termPayment, principalPayment, interestPayment, totalMonthlyCustomerPayment, extraMonthlyPayment });
             
             // Break rather than continue filling the amortization schedule with $0 values.
             break;
