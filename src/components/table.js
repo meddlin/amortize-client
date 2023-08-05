@@ -14,32 +14,52 @@ import {
     getFacetedMinMaxValues,
     sortingFns,
 } from "@tanstack/react-table";
+import { info } from 'autoprefixer';
 
-const Table = () => {
-    // const { amortization, isLoadingAmortization, isErrorAmortization } = useAmortization();
-    const amortization = [];
-    
+const Table = ({ amortization }) => {    
     const columnHelper = createColumnHelper();
     const columns = [
         columnHelper.accessor('term', {
             header: () => <h3>Term</h3>,
-            cell: info => info.getValue(),
+            cell: info => {
+                const value = info.getValue();
+                return value + 1;
+            }
         }),
-        columnHelper.accessor('monthlyPayments', {
-            header: () => <h3>Monthly Payments</h3>,
-            cell: info => info.getValue(),
+        columnHelper.accessor('totalMonthlyCustomerPayment', {
+            header: () => <h3>Total Monthly Payment</h3>,
+            cell: info => {
+                const value = info.getValue();
+                return value ? `$${value.toFixed(2)}` : value;
+            }
         }),
-        columnHelper.accessor('principal', {
+        columnHelper.accessor('termPayment', {
+            header: () => <h3>P&I</h3>,
+            cell: info => {
+                const value = info.getValue();
+                return value ? `$${value.toFixed(2)}` : value;
+            },
+        }),
+        columnHelper.accessor('principalPayment', {
             header: () => <h3>Principal</h3>,
-            cell: info => info.getValue(),
+            cell: info => {
+                const value = info.getValue();
+                return value ? `$${value.toFixed(2)}` : value;
+            },
         }),
-        columnHelper.accessor('interest', {
+        columnHelper.accessor('interestPayment', {
             header: () => <h3>Interest</h3>,
-            cell: info => info.getValue(),
+            cell: info => {
+                const value = info.getValue();
+                return value ? `$${value.toFixed(2)}` : value;
+            },
         }),
-        columnHelper.accessor('remainingPrincipal', {
+        columnHelper.accessor('remaining', {
             header: () => <h3>Rem. Principal</h3>,
-            cell: info => info.getValue(),
+            cell: info => {
+                const value = info.getValue();
+                return value ? `$${value.toFixed(2)}` : value;
+            },
         }),
         columnHelper.accessor('extraPayment', {
             header: () => <h3>Extra Payment</h3>,
@@ -54,7 +74,7 @@ const Table = () => {
         getPaginationRowModel: getPaginationRowModel(),
         initialState: {
             pagination: {
-                pageSize: 30,
+                pageSize: 400,
             },
         },
     })
@@ -67,14 +87,6 @@ const Table = () => {
                     <p className="mt-2 text-sm text-gray-700">
                         See the calculated amortization table below.
                     </p>
-                </div>
-                <div className="mt-4 sm:ml-16 sm:mt-0 sm:flex-none">
-                    <button
-                        type="button"
-                        className="block rounded-md bg-indigo-600 px-3 py-2 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-                    >
-                        Some button
-                    </button>
                 </div>
             </div>
             <div className="mt-8 flow-root">
@@ -122,30 +134,27 @@ const Table = () => {
                             ))}
                         </thead>
                         <tbody className="divide-y divide-gray-200">
-                            <tr>
-                                <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">Data here</td>
-                            </tr>
-
-                            {/* {people.map((person) => (
-                                <tr key={person.email}>
-                                    <td className="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-0">
-                                        {person.name}
-                                    </td>
-                                    <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{person.title}</td>
-                                    <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{person.email}</td>
-                                    <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{person.role}</td>
-                                    <td className="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-0">
-                                    <a href="#" className="text-indigo-600 hover:text-indigo-900">
-                                        Edit<span className="sr-only">, {person.name}</span>
-                                    </a>
-                                    </td>
-                                </tr>
-                            ))} */}
+                            {/* 
+                                {people.map((person) => (
+                                    <tr key={person.email}>
+                                        <td className="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-0">
+                                            {person.name}
+                                        </td>
+                                        <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{person.title}</td>
+                                        <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{person.email}</td>
+                                        <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{person.role}</td>
+                                        <td className="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-0">
+                                        <a href="#" className="text-indigo-600 hover:text-indigo-900">
+                                            Edit<span className="sr-only">, {person.name}</span>
+                                        </a>
+                                        </td>
+                                    </tr>
+                                ))} 
+                            */}
 
                             {table.getRowModel().rows.map((row) => (
                                 <tr 
                                     key={row.id} 
-                                    onClick={() => setCurrentPurchaseOrder(row.original)}
                                     className="leading-4 text-sm hover:bg-slate-100 hover:cursor-pointer">
                                     {row.getVisibleCells().map(cell => (
                                         <td key={cell.id} className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
