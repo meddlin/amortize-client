@@ -1,12 +1,10 @@
-// const loanAmount = 250000;
-// const interestRate = 0.04; // 4.0% => 0.04
-// const terms = 360; // (in months) 30 years => 360 months
+'use client'
 
 /**
  * Calculate the monthly payment - the amount to be paid monthly.
  * @param {*} loanAmount 
- * @param {*} interestRate 
- * @param {*} terms 
+ * @param {*} interestRate // 4.0% => 0.04
+ * @param {*} terms // (in months) 30 years => 360 months
  * @returns 
  */
 const monthlyPayment = (loanAmount, interestRate, terms) => {
