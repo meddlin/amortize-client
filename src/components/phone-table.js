@@ -1,17 +1,6 @@
 'use client'
 
 import React, { useState } from 'react';
-import { 
-    useReactTable, 
-    createColumnHelper, 
-    flexRender, 
-    getCoreRowModel, 
-    getPaginationRowModel,
-} from "@tanstack/react-table";
-import { DetailModal, DetailModalOpenButton, DetailModalDismissButton, DetailModalContents } from './modal/detail-modal';
-import { 
-    XCircleIcon
-} from '@heroicons/react/24/outline';
 import { Disclosure, Transition } from '@headlessui/react';
 
 const PhoneTable = ({ amortization }) => {
@@ -57,7 +46,27 @@ const PhoneTable = ({ amortization }) => {
                                                         leaveTo="transform scale-95 opacity-0"
                                                     >
                                             <Disclosure.Panel>
-                                                <span className="font-bold text-lg">test</span>
+                                                <p>
+                                                    Term: {am.Term ? am.term + 1 : ''}
+                                                </p>
+                                                <p>
+                                                    Remaining: {am.remaining ? `$${am.remaining.toFixed(2)}` : ''}
+                                                </p>
+                                                <p>
+                                                    Term Payment: {am.termPayment ? `$${am.termPayment.toFixed(2)}` : ''}
+                                                </p>
+                                                <p>
+                                                    Principal Payment: {am.principalPayment ? `$${am.principalPayment.toFixed(2)}` : ''}
+                                                </p>
+                                                <p>
+                                                    Interest Payment: {am.interestPayment ? `$${am.interestPayment.toFixed(2)}` : ''}
+                                                </p>
+                                                <p>
+                                                    Total Monthly Payment: {am.totalMonthlyPayment ? `$${am.totalMonthlyPayment.toFixed(2)}` : ''}
+                                                </p>
+                                                <p>
+                                                    Extra Monthly Payment: {am.extraMonthlyPayment ? `$${am.extraMonthlyPayment.toFixed(2)}` : ''}
+                                                </p>
                                             </Disclosure.Panel>
                                             </Transition>
                                         </div>
