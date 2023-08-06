@@ -5,6 +5,7 @@ import { Formik, Form, ErrorMessage } from "formik";
 import { number, object, string, date } from 'yup';
 import Table from './table';
 import { amortizationSchedule } from '../utilities/calculations';
+import { Disclosure } from '@headlessui/react';
 import NumberInput from './form/number-input';
 
 const CalculationForm = () => {
@@ -59,8 +60,8 @@ const CalculationForm = () => {
                         <div className="flex flex-col justify-center">
                             
                             <div className="flex justify-center items-center">
-
                                 <div className="flex flex-col">
+
                                     <div className="grow mt-6 divide-y divide-gray-200">
                                         <NumberInput title={'Sale Price'} type={'number'} name={'salePrice'} id={'salePrice'}
                                             value={values.salePrice} 
@@ -89,36 +90,44 @@ const CalculationForm = () => {
                                             errors={errors.interestRate} handleChange={handleChange} handleBlur={handleBlur}
                                         />
                                     </div>
-                                    <div className="grow mt-6 divide-y divide-gray-200">
-                                        <NumberInput title={'Home Insurance'} type={'number'} name={'homeInsurance'} id={'homeInsurance'}
-                                            value={values.homeInsurance} 
-                                            touched={touched.homeInsurance} 
-                                            errors={errors.homeInsurance} handleChange={handleChange} handleBlur={handleBlur}
-                                        />
-                                    </div>
-                                    <div className="grow mt-6 divide-y divide-gray-200">
-                                        <NumberInput title={'Property Tax'} type={'number'} name={'propertyTax'} id={'propertyTax'}
-                                            value={values.propertyTax} 
-                                            touched={touched.propertyTax} 
-                                            errors={errors.propertyTax} handleChange={handleChange} handleBlur={handleBlur}
-                                        />
-                                    </div>
-                                    <div className="grow mt-6 divide-y divide-gray-200">
-                                        <NumberInput title={'Mortgage Insurance'} type={'number'} name={'mortgageInsurance'} id={'mortgageInsurance'}
-                                            value={values.mortgageInsurance} 
-                                            touched={touched.mortgageInsurance} 
-                                            errors={errors.mortgageInsurance} handleChange={handleChange} handleBlur={handleBlur}
-                                        />
-                                    </div>
-                                    <div className="grow mt-6 divide-y divide-gray-200">
-                                        <NumberInput title={'Extra Monthly Payment'} type={'number'} name={'extraMonthlyPayment'} id={'extraMonthlyPayment'}
-                                            value={values.extraMonthlyPayment} 
-                                            touched={touched.extraMonthlyPayment} 
-                                            errors={errors.extraMonthlyPayment} handleChange={handleChange} handleBlur={handleBlur}
-                                        />
-                                    </div>
-                                </div>
 
+                                    <Disclosure>
+                                        <Disclosure.Button className="py-2">
+                                            Additional Information
+                                        </Disclosure.Button>
+                                        <Disclosure.Panel className="text-gray-500">
+                                            <div className="grow mt-3 divide-y divide-gray-200">
+                                                <NumberInput title={'Home Insurance'} type={'number'} name={'homeInsurance'} id={'homeInsurance'}
+                                                    value={values.homeInsurance} 
+                                                    touched={touched.homeInsurance} 
+                                                    errors={errors.homeInsurance} handleChange={handleChange} handleBlur={handleBlur}
+                                                />
+                                            </div>
+                                            <div className="grow mt-3 divide-y divide-gray-200">
+                                                <NumberInput title={'Property Tax'} type={'number'} name={'propertyTax'} id={'propertyTax'}
+                                                    value={values.propertyTax} 
+                                                    touched={touched.propertyTax} 
+                                                    errors={errors.propertyTax} handleChange={handleChange} handleBlur={handleBlur}
+                                                />
+                                            </div>
+                                            <div className="grow mt-3 divide-y divide-gray-200">
+                                                <NumberInput title={'Mortgage Insurance'} type={'number'} name={'mortgageInsurance'} id={'mortgageInsurance'}
+                                                    value={values.mortgageInsurance} 
+                                                    touched={touched.mortgageInsurance} 
+                                                    errors={errors.mortgageInsurance} handleChange={handleChange} handleBlur={handleBlur}
+                                                />
+                                            </div>
+                                            <div className="grow mt-3 divide-y divide-gray-200">
+                                                <NumberInput title={'Extra Monthly Payment'} type={'number'} name={'extraMonthlyPayment'} id={'extraMonthlyPayment'}
+                                                    value={values.extraMonthlyPayment} 
+                                                    touched={touched.extraMonthlyPayment} 
+                                                    errors={errors.extraMonthlyPayment} handleChange={handleChange} handleBlur={handleBlur}
+                                                />
+                                            </div>
+                                        </Disclosure.Panel>
+                                    </Disclosure>
+
+                                </div>
                             </div>
 
                             <div className="flex flex-row justify-center">
