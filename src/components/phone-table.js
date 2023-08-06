@@ -8,99 +8,67 @@ import {
     getCoreRowModel, 
     getPaginationRowModel,
 } from "@tanstack/react-table";
+import { DetailModal, DetailModalOpenButton, DetailModalDismissButton, DetailModalContents } from './modal/detail-modal';
+import { 
+    XCircleIcon
+} from '@heroicons/react/24/outline';
+import { Disclosure, Transition } from '@headlessui/react';
 
-const PhoneTable = ({ amortization }) => {    
-    const columnHelper = createColumnHelper();
-    const columns = [
-        columnHelper.accessor('term', {
-            header: () => <h3>Term</h3>,
-            cell: info => {
-                const value = info.getValue();
-                return value + 1;
-            }
-        }),
-        columnHelper.accessor('totalMonthlyCustomerPayment', {
-            header: () => <h3 className="max-w-[75px]">Total Mon. Pmt.</h3>,
-            cell: info => {
-                const value = info.getValue();
-                return value ? `$${value.toFixed(2)}` : value;
-            }
-        }),
-        columnHelper.accessor('termPayment', {
-            header: () => <h3>P&I</h3>,
-            cell: info => {
-                const value = info.getValue();
-                return value ? `$${value.toFixed(2)}` : value;
-            },
-        }),
-        columnHelper.accessor('remaining', {
-            header: () => <h3 className="max-w-[75px]">Rem. Principal</h3>,
-            cell: info => {
-                const value = info.getValue();
-                return value ? `$${value.toFixed(2)}` : value;
-            },
-        }),
-        // columnHelper.accessor('extraMonthlyPayment', {
-        //     header: () => <h3>Extra Payment</h3>,
-        //     cell: info => {
-        //         const value = info.getValue();
-        //         return value ? `$${value.toFixed(2)}` : value;
-        //     },
-        // }),
-    ];
-
-    const table = useReactTable({
-        columns: columns,
-        data: (amortization && amortization.length > 0) ? amortization : [],
-        getCoreRowModel: getCoreRowModel(),
-        getPaginationRowModel: getPaginationRowModel(),
-        initialState: {
-            pagination: {
-                pageSize: 400,
-            },
-        },
-    })
+const PhoneTable = ({ amortization }) => {
 
     return (
-        <div className="flex justify-center">
-            <table className="divide-y divide-gray-300">
-                <thead>
-                    {table.getHeaderGroups().map((headerGroup) => (
-                        <tr key={headerGroup.id}>
-                            {headerGroup.headers.map((header) => (
-                                <th key={header.id} className="px-2 py-3.5 text-left text-sm font-semibold text-gray-900">
-                                    {
-                                        header.isPlaceholder 
-                                        ? null 
-                                        : (
-                                            <>
-                                                <div>
-                                                    {flexRender(
-                                                        header.column.columnDef.header, header.getContext() 
-                                                    )}
+        <div className="flex justify-center min-w-full">
+            {amortization && amortization.length > 0 ? (
+                <>
+                    <div className="flex flex-col">        
+                        <ul role="list" className="divide-y divide-gray-100">
+                            <div className="flex gap-x-6">
+                                <li className="max-w-[30px] font-semibold text-sm my-5 mr-1">Term</li>
+                                <li className="max-w-[60px] font-semibold text-sm my-5 mx-1">Rem.</li>
+                                <li className="max-w-[60px] font-semibold text-sm my-5 mx-1 whitespace">Term Payment</li>
+                            </div>
+                            {amortization.map((am) => (
+                                <li key={am.term} className="flex justify-between py-2">
+                                    <Disclosure>
+                                        <div className="flex flex-col">
+                                            <Disclosure.Button>
+                                                <div className="flex gap-x-6">
+                                                    <div 
+                                                        className="min-w-[30px] text-sm leading-6 text-gray-500">
+                                                        {am.term + 1}
+                                                    </div>
+                                                    <div 
+                                                        className="min-w-[60px] text-sm leading-6 text-gray-500">
+                                                        {`$${am.remaining.toFixed(2)}`}
+                                                    </div>
+                                                    <div 
+                                                        className="min-w-[60px] text-sm leading-6 text-gray-500">
+                                                        {`$${am.termPayment.toFixed(2)}`}
+                                                    </div>
                                                 </div>
-                                            </>
-                                        )
-                                    }
-                                </th>
+                                            </Disclosure.Button>
+
+                                            <Transition
+                                                        enter="transition duration-100 ease-out"
+                                                        enterFrom="transform scale-95 opacity-0"
+                                                        enterTo="transform scale-100 opacity-100"
+                                                        leave="transition duration-75 ease-out"
+                                                        leaveFrom="transform scale-100 opacity-100"
+                                                        leaveTo="transform scale-95 opacity-0"
+                                                    >
+                                            <Disclosure.Panel>
+                                                <span className="font-bold text-lg">test</span>
+                                            </Disclosure.Panel>
+                                            </Transition>
+                                        </div>
+
+                                    </Disclosure>
+                                </li>
                             ))}
-                        </tr>
-                    ))}
-                </thead>
-                <tbody className="divide-y divide-gray-200">
-                    {table.getRowModel().rows.map((row) => (
-                        <tr 
-                            key={row.id} 
-                            className="leading-4 text-sm hover:bg-slate-100 hover:cursor-pointer">
-                            {row.getVisibleCells().map(cell => (
-                                <td key={cell.id} className="whitespace-nowrap px-2 py-2 text-sm text-gray-500">
-                                    {flexRender(cell.column.columnDef.cell, cell.getContext())}
-                                </td>
-                            ))}
-                        </tr>
-                    ))}
-                </tbody>
-            </table>
+                        </ul>
+                    </div>
+                </>
+            ) : 'No data to display yet.'}
         </div>
     );
 };
