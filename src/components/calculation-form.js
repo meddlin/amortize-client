@@ -5,6 +5,7 @@ import { Formik, Form, ErrorMessage } from "formik";
 import { number, object, string, date } from 'yup';
 import Table from './table';
 import { amortizationSchedule } from '../utilities/calculations';
+import NumberInput from './form/number-input';
 
 const CalculationForm = () => {
     const [schedule, setSchedule] = useState([]);
@@ -60,20 +61,10 @@ const CalculationForm = () => {
                             <div className="flex justify-center items-center">
                                 <div className="flex flex-col">
                                     <div className="grow mt-6 divide-y divide-gray-200">
-                                        <label htmlFor="salePrice" className="block text-sm font-medium text-gray-700">Sale Price</label>
-                                        <div className="mt-2 mr-5 flex flex-col">
-                                            <input 
-                                                type="number"
-                                                name="salePrice"
-                                                id="salePrice"
-                                                data-testid="salePrice"
-                                                className={ `${errors.salePrice && touched.salePrice ? 'input-error' : ''} block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6` }
-                                                onChange={handleChange}
-                                                onBlur={handleBlur}
-                                                value={values.salePrice}
-                                            />
-                                            <ErrorMessage name="salePrice" component="span" className="error text-xs text-red-700" />
-                                        </div>
+                                        <NumberInput title={'Sale Price'} type={'number'} name={'salePrice'} id={'salePrice'}
+                                            value={values.salePrice} 
+                                            touched={touched.salePrice} 
+                                            errors={errors.salePrice} handleChange={handleChange} handleBlur={handleBlur} />
                                     </div>
                                     <div className="grow mt-6 divide-y divide-gray-200">
                                         <label htmlFor="downPayment" className="block text-sm font-medium text-gray-700">Down Payment</label>
