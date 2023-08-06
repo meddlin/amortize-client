@@ -156,9 +156,18 @@ const CalculationForm = () => {
                 )}
             </Formik>
 
+            
             {schedule && schedule.length > 0 ? (
-                <Table amortization={schedule} />
+                <div className="flex xs:flex-col-reverse sm:flex-col">
+                    <div className="xs:invisible sm:visible">
+                        <Table amortization={schedule} />
+                    </div>
+                    <div className="xs:visible sm:invisible">
+                        <span className="italic">small screen table here</span>
+                    </div>
+                </div>
             ) : ''}
+            
         </>
     );
 };

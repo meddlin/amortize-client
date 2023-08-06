@@ -14,7 +14,6 @@ import {
     getFacetedMinMaxValues,
     sortingFns,
 } from "@tanstack/react-table";
-import { info } from 'autoprefixer';
 
 const Table = ({ amortization }) => {    
     const columnHelper = createColumnHelper();
