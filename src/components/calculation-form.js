@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { Formik, Form, ErrorMessage } from "formik";
 import { number, object, string, date } from 'yup';
 import Table from './table';
+import PhoneTable from './phone-table';
 import { amortizationSchedule } from '../utilities/calculations';
 import { Disclosure } from '@headlessui/react';
 import NumberInput from './form/number-input';
@@ -163,7 +164,7 @@ const CalculationForm = () => {
                         <Table amortization={schedule} />
                     </div>
                     <div className="xs:visible sm:invisible">
-                        <span className="italic">small screen table here</span>
+                        <PhoneTable amortization={schedule} />
                     </div>
                 </div>
             ) : ''}
