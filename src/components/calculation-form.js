@@ -89,9 +89,6 @@ const CalculationForm = () => {
                                             errors={errors.interestRate} handleChange={handleChange} handleBlur={handleBlur}
                                         />
                                     </div>
-                                </div>
-
-                                <div className="flex flex-col">
                                     <div className="grow mt-6 divide-y divide-gray-200">
                                         <NumberInput title={'Home Insurance'} type={'number'} name={'homeInsurance'} id={'homeInsurance'}
                                             value={values.homeInsurance} 
@@ -121,7 +118,7 @@ const CalculationForm = () => {
                                         />
                                     </div>
                                 </div>
-                                
+
                             </div>
 
                             <div className="flex flex-row justify-center">
