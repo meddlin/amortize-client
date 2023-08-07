@@ -16,5 +16,13 @@ jobs:
                 
             # Run sandworm-audit via npm script in package.json
             - name: Run audit
+              id: sandworm-audit
               run: npm run sca
+            
+            # Print the audit report to PR comment
+            - uses: peter-evans/create-or-update-comment@v3
+              with:
+                    issue-number: ${{ github.event.number }}
+                    body: ${{ steps.sandworm-audit.outputs.report }}
+                    # token: ${{ secrets.GITHUB_TOKEN }}
             
