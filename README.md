@@ -24,7 +24,7 @@ yarn dev
 pnpm dev
 ```
 
-**Package Checking**
+**Package Dependency Checking**
 
 Run Sandworm to check for any license or security issues introduced by 3rd-party packages.
 
