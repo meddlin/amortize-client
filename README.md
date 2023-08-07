@@ -24,14 +24,17 @@ yarn dev
 pnpm dev
 ```
 
-**Package Dependency Checking**
+## Package Dependency Checking
 
-Run Sandworm to check for any license or security issues introduced by 3rd-party packages.
+Run Sandworm to check for any license or security issues introduced by 3rd-party packages. This `npm` script
+executes an `npx` script in `package.json` to run sandworm-audit without the user needing to install
+sandworm globally.
 
 ```bash
 npm run sca
 ```
 
-Sandworm repo: [https://github.com/sandworm-hq/sandworm-audit](https://github.com/sandworm-hq/sandworm-audit)
+More info:
 
-Sandworm docs: [https://docs.sandworm.dev/](https://docs.sandworm.dev/)
+- Sandworm repo: [https://github.com/sandworm-hq/sandworm-audit](https://github.com/sandworm-hq/sandworm-audit)
+- Sandworm docs: [https://docs.sandworm.dev/](https://docs.sandworm.dev/)
