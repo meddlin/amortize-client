@@ -13,7 +13,7 @@
     "sca": "npx @sandworm/audit@latest"
   },
   "dependencies": {
-    "@headlessui/react": "^1.7.16",
+    "@headlessui/react": "^1.7.17",
     "@heroicons/react": "^2.0.18",
     "@tanstack/react-table": "^8.9.3",
     "autoprefixer": "10.4.15",
